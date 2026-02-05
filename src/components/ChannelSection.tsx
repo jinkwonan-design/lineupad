@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Users, Eye, DollarSign } from "lucide-react";
+import Image from "next/image";
 
 const stats = [
   {
@@ -65,15 +66,15 @@ export default function ChannelSection() {
           transition={{ duration: 0.6 }}
           className="relative group mb-16"
         >
-          <div className="aspect-[21/9] bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl overflow-hidden border border-gray-200 flex items-center justify-center">
-            {/* Placeholder for wide team photo */}
-            <div className="text-center p-8">
-              <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-amber-400/20 flex items-center justify-center">
-                <Users className="w-12 h-12 text-primary" />
-              </div>
-              <p className="text-background/40 font-medium text-lg">대표와 직원들의 단체 사진</p>
-              <p className="text-background/30 text-sm mt-1">가로로 긴 형태의 팀 사진이 들어갑니다</p>
-            </div>
+          <div className="aspect-[21/9] bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl overflow-hidden border border-gray-200">
+            <Image
+              src="/images/team.jpg"
+              alt="라인업애드 팀"
+              width={1512}
+              height={648}
+              className="w-full h-full object-cover"
+              priority
+            />
           </div>
           <div className="absolute bottom-4 left-4 right-4 md:left-6 md:right-auto bg-white/90 backdrop-blur-sm rounded-2xl p-4 opacity-0 group-hover:opacity-100 transition-opacity">
             <p className="text-sm font-semibold text-background">라인업애드 팀</p>
