@@ -4,7 +4,6 @@ import ProblemSection from "@/components/ProblemSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import DifferentiationSection from "@/components/DifferentiationSection";
-import ComparisonSection from "@/components/ComparisonSection";
 import ChannelSection from "@/components/ChannelSection";
 import PlatformSection from "@/components/PlatformSection";
 import ProcessSection from "@/components/ProcessSection";
@@ -22,7 +21,6 @@ export default function Home() {
       <DifferentiationSection />
       <PortfolioSection />
       <TestimonialSection />
-      <ComparisonSection />
       <ChannelSection />
       <PlatformSection />
       <ProcessSection />
