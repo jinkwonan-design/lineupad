@@ -25,10 +25,10 @@ const contentTypes = [
     uiType: "smartstore",
   },
   {
-    title: "광고 소재",
-    subtitle: "메타, 유튜브 광고",
-    image: null,
-    uiType: null,
+    title: "원본 소재",
+    subtitle: "Raw 영상 파일",
+    image: "/images/ones.png",
+    uiType: "raw",
   },
 ];
 
@@ -269,6 +269,28 @@ export default function PlatformSection() {
                       {/* Label */}
                       <span className="inline-block mt-2 bg-red-600 text-white text-[8px] font-bold px-2 py-0.5 rounded">
                         Shorts
+                      </span>
+                    </div>
+                  </div>
+                ) : contentTypes[currentIndex].uiType === "raw" && contentTypes[currentIndex].image ? (
+                  // Raw footage style - simple with play button
+                  <div className="relative w-full h-full bg-black">
+                    <Image
+                      src={contentTypes[currentIndex].image}
+                      alt={contentTypes[currentIndex].title}
+                      fill
+                      className="object-cover"
+                    />
+                    {/* Play button overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-black/50 flex items-center justify-center">
+                        <Play className="w-7 h-7 text-white ml-1" fill="white" />
+                      </div>
+                    </div>
+                    {/* Simple label */}
+                    <div className="absolute bottom-4 left-0 right-0 text-center">
+                      <span className="bg-black/70 text-white text-[10px] font-bold px-3 py-1.5 rounded-full">
+                        {contentTypes[currentIndex].title}
                       </span>
                     </div>
                   </div>
