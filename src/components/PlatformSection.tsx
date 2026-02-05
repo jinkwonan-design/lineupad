@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Play, Heart, MessageCircle, Send, Bookmark, ThumbsUp, ThumbsDown, Share2, Sparkles } from "lucide-react";
 import Image from "next/image";
 
@@ -34,13 +34,37 @@ const contentTypes = [
 
 export default function PlatformSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % contentTypes.length);
+    }, 3000); // 3초마다 슬라이드 변경
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
 
   const nextSlide = () => {
+    setIsAutoPlaying(false); // 수동 조작 시 자동 재생 일시 중지
     setCurrentIndex((prev) => (prev + 1) % contentTypes.length);
+    // 5초 후 자동 재생 재개
+    setTimeout(() => setIsAutoPlaying(true), 5000);
   };
 
   const prevSlide = () => {
+    setIsAutoPlaying(false); // 수동 조작 시 자동 재생 일시 중지
     setCurrentIndex((prev) => (prev - 1 + contentTypes.length) % contentTypes.length);
+    // 5초 후 자동 재생 재개
+    setTimeout(() => setIsAutoPlaying(true), 5000);
+  };
+
+  const goToSlide = (index: number) => {
+    setIsAutoPlaying(false);
+    setCurrentIndex(index);
+    setTimeout(() => setIsAutoPlaying(true), 5000);
   };
 
   return (
@@ -374,11 +398,11 @@ export default function PlatformSection() {
             {contentTypes.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
+                onClick={() => goToSlide(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex
                     ? "w-6 bg-primary"
-                    : "bg-gray-300 hover:bg-gray-400"
+                    : "w-2 bg-gray-300 hover:bg-gray-400"
                 }`}
               />
             ))}
