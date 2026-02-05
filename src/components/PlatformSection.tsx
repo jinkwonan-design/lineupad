@@ -105,10 +105,18 @@ export default function PlatformSection() {
           <div className="flex items-center justify-center gap-4 md:gap-6 py-8">
             {/* Left Phone Mockup - Faded */}
             <div className="hidden md:block relative opacity-40 scale-90 -mr-8">
-              <div className="w-32 lg:w-40 aspect-[9/16] bg-gradient-to-br from-gray-200 to-gray-300 rounded-3xl overflow-hidden border-4 border-gray-300 shadow-lg">
-                <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
-                    <Play className="w-5 h-5 text-gray-400 ml-0.5" />
+              <div className="w-32 lg:w-40 aspect-[9/16] rounded-3xl overflow-hidden border-4 border-gray-300 shadow-lg">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/images/ones.png"
+                    alt="content preview"
+                    fill
+                    className="object-cover blur-sm"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                    <div className="w-10 h-10 rounded-full bg-white/30 flex items-center justify-center">
+                      <Play className="w-5 h-5 text-white ml-0.5" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -116,10 +124,18 @@ export default function PlatformSection() {
 
             {/* Left Phone Mockup - Semi visible */}
             <div className="hidden lg:block relative opacity-60 scale-95 -mr-4">
-              <div className="w-36 lg:w-44 aspect-[9/16] bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl overflow-hidden border-4 border-gray-200 shadow-xl">
-                <div className="w-full h-full bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
-                    <Play className="w-6 h-6 text-gray-400 ml-0.5" />
+              <div className="w-36 lg:w-44 aspect-[9/16] rounded-3xl overflow-hidden border-4 border-gray-200 shadow-xl">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/images/ones.png"
+                    alt="content preview"
+                    fill
+                    className="object-cover blur-[2px]"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/10">
+                    <div className="w-12 h-12 rounded-full bg-white/30 flex items-center justify-center">
+                      <Play className="w-6 h-6 text-white ml-0.5" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -358,10 +374,18 @@ export default function PlatformSection() {
 
             {/* Right Phone Mockup - Semi visible */}
             <div className="hidden lg:block relative opacity-60 scale-95 -ml-4">
-              <div className="w-36 lg:w-44 aspect-[9/16] bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl overflow-hidden border-4 border-gray-200 shadow-xl">
-                <div className="w-full h-full bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
-                    <Play className="w-6 h-6 text-gray-400 ml-0.5" />
+              <div className="w-36 lg:w-44 aspect-[9/16] rounded-3xl overflow-hidden border-4 border-gray-200 shadow-xl">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/images/ones.png"
+                    alt="content preview"
+                    fill
+                    className="object-cover blur-[2px]"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/10">
+                    <div className="w-12 h-12 rounded-full bg-white/30 flex items-center justify-center">
+                      <Play className="w-6 h-6 text-white ml-0.5" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -369,10 +393,18 @@ export default function PlatformSection() {
 
             {/* Right Phone Mockup - Faded */}
             <div className="hidden md:block relative opacity-40 scale-90 -ml-8">
-              <div className="w-32 lg:w-40 aspect-[9/16] bg-gradient-to-br from-gray-200 to-gray-300 rounded-3xl overflow-hidden border-4 border-gray-300 shadow-lg">
-                <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
-                    <Play className="w-5 h-5 text-gray-400 ml-0.5" />
+              <div className="w-32 lg:w-40 aspect-[9/16] rounded-3xl overflow-hidden border-4 border-gray-300 shadow-lg">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/images/ones.png"
+                    alt="content preview"
+                    fill
+                    className="object-cover blur-sm"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                    <div className="w-10 h-10 rounded-full bg-white/30 flex items-center justify-center">
+                      <Play className="w-5 h-5 text-white ml-0.5" />
+                    </div>
                   </div>
                 </div>
               </div>
