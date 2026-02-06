@@ -6,9 +6,9 @@ import { useRef, useState } from "react";
 
 const portfolioItems = [
   { views: "576만", video: "/videos/video1.mp4" },
-  { views: "396만", video: "/videos/video2.mp4" },
-  { views: "109만", video: "/videos/video3.mp4" },
-  { views: "102만", video: "/videos/video4.mp4" },
+  { views: "396만", video: "/videos/video16.mp4" },
+  { views: "109만", video: "/videos/video15.mp4" },
+  { views: "102만", video: "/videos/video17.mp4" },
 ];
 
 function PortfolioVideoCard({ item, index }: { item: { views: string; video: string }; index: number }) {
