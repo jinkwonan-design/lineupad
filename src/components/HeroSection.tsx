@@ -37,7 +37,7 @@ function HeroVideoCard({ item, index }: { item: { category: string; metric: stri
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
       whileHover={{ y: -8 }}
-      className="flex-shrink-0 w-[140px] md:w-[170px] snap-center cursor-pointer group"
+      className="flex-shrink-0 w-[160px] md:w-[220px] snap-center cursor-pointer group"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -65,8 +65,8 @@ function HeroVideoCard({ item, index }: { item: { category: string; metric: stri
 
               {/* Play Button Overlay */}
               <div className={`absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
-                <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
-                  <Play className="w-5 h-5 text-background fill-background ml-0.5" />
+                <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                  <Play className="w-6 h-6 text-background fill-background ml-0.5" />
                 </div>
               </div>
 
