@@ -1,14 +1,73 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, Eye } from "lucide-react";
+import { useRef, useState } from "react";
 
 const portfolioItems = [
-  { views: "83만", color: "from-orange-400 to-orange-500" },
-  { views: "31만", color: "from-pink-400 to-pink-500" },
-  { views: "147만", color: "from-emerald-400 to-emerald-500" },
-  { views: "257만", color: "from-blue-400 to-blue-500" },
+  { views: "83만", video: "/videos/video1.mp4" },
+  { views: "31만", video: "/videos/video2.mp4" },
+  { views: "147만", video: "/videos/video3.mp4" },
+  { views: "257만", video: "/videos/video4.mp4" },
 ];
+
+function PortfolioVideoCard({ item, index }: { item: { views: string; video: string }; index: number }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+      setIsPlaying(false);
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="relative aspect-[9/16] rounded-2xl overflow-hidden bg-gray-900 cursor-pointer group"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <video
+        ref={videoRef}
+        src={item.video}
+        className="w-full h-full object-cover"
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+
+      {/* Play button overlay */}
+      <div className={`absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
+        <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+          <Play className="w-6 h-6 text-background ml-1" fill="currentColor" />
+        </div>
+      </div>
+
+      {/* Views badge */}
+      <div className="absolute bottom-3 left-3 right-3 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm rounded-full px-3 py-1.5">
+        <Eye className="w-4 h-4 text-white/80" />
+        <span className="text-white text-sm font-semibold">{item.views} 조회</span>
+      </div>
+
+      {/* Hover gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+    </motion.div>
+  );
+}
 
 export default function PortfolioSection() {
   return (
@@ -37,29 +96,7 @@ export default function PortfolioSection() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {portfolioItems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.03, y: -8 }}
-              className="relative aspect-[9/16] rounded-3xl overflow-hidden cursor-pointer group shadow-lg hover:shadow-2xl transition-all duration-300"
-            >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${item.color}`}
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:bg-white/40 transition-all duration-300">
-                  <Play className="w-8 h-8 text-white fill-white ml-1" />
-                </div>
-              </div>
-              <div className="absolute bottom-4 left-4 right-4">
-                <span className="text-2xl md:text-3xl font-black text-white drop-shadow-lg">
-                  {item.views}뷰
-                </span>
-              </div>
-            </motion.div>
+            <PortfolioVideoCard key={index} item={item} index={index} />
           ))}
         </div>
       </div>
