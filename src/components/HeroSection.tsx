@@ -72,7 +72,7 @@ export default function HeroSection() {
           >
             대기업 대비{" "}
             <span className="text-background font-bold">1/10</span> 비용으로{" "}
-            <span className="text-background font-bold">10배</span> 더 높은 조회수를 경험하세요
+            <span className="text-background font-bold">10배</span> 더 높은 매출을 경험하세요
           </motion.p>
         </div>
 
