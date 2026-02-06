@@ -1,8 +1,64 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Play, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
+
+// 카운트업 애니메이션 컴포넌트
+function CountUp({
+  end,
+  suffix = "",
+  duration = 2000
+}: {
+  end: number;
+  suffix?: string;
+  duration?: number;
+}) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const hasAnimated = useRef(false);
+
+  const formatNumber = useCallback((num: number) => {
+    if (num >= 1000) {
+      return num.toLocaleString();
+    }
+    return num.toString();
+  }, []);
+
+  useEffect(() => {
+    if (isInView && !hasAnimated.current) {
+      hasAnimated.current = true;
+      const startTime = Date.now();
+      const startValue = 0;
+
+      const animate = () => {
+        const now = Date.now();
+        const progress = Math.min((now - startTime) / duration, 1);
+
+        // easeOutExpo 이징 함수
+        const easeProgress = 1 - Math.pow(2, -10 * progress);
+        const currentValue = Math.floor(startValue + (end - startValue) * easeProgress);
+
+        setCount(currentValue);
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          setCount(end);
+        }
+      };
+
+      requestAnimationFrame(animate);
+    }
+  }, [isInView, end, duration]);
+
+  return (
+    <span ref={ref}>
+      {formatNumber(count)}{suffix}
+    </span>
+  );
+}
 
 const portfolioItems = [
   { category: "F&B 브랜드", metric: "조회수 83만", video: "/videos/video12.mp4" },
@@ -285,16 +341,24 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex justify-center gap-8 md:gap-16 mb-16"
         >
-          {[
-            { value: "500+", label: "제작 영상" },
-            { value: "14억", label: "누적 매출" },
-            { value: "1,000만+", label: "총 조회수" },
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <p className="text-2xl md:text-4xl font-black text-background">{stat.value}</p>
-              <p className="text-sm md:text-base text-background/50">{stat.label}</p>
-            </div>
-          ))}
+          <div className="text-center">
+            <p className="text-2xl md:text-4xl font-black text-background">
+              <CountUp end={500} suffix="+" duration={2000} />
+            </p>
+            <p className="text-sm md:text-base text-background/50">제작 영상</p>
+          </div>
+          <div className="text-center">
+            <p className="text-2xl md:text-4xl font-black text-background">
+              <CountUp end={14} suffix="억" duration={2000} />
+            </p>
+            <p className="text-sm md:text-base text-background/50">누적 매출</p>
+          </div>
+          <div className="text-center">
+            <p className="text-2xl md:text-4xl font-black text-background">
+              <CountUp end={1000} suffix="만+" duration={2000} />
+            </p>
+            <p className="text-sm md:text-base text-background/50">총 조회수</p>
+          </div>
         </motion.div>
 
         {/* Portfolio Preview */}
