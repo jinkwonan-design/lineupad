@@ -2,14 +2,101 @@
 
 import { motion } from "framer-motion";
 import { Play, ArrowRight } from "lucide-react";
+import { useRef, useState } from "react";
 
 const portfolioItems = [
-  { category: "F&B 브랜드", metric: "조회수 83만" },
-  { category: "식품 A 브랜드", metric: "ROAS 3.1배" },
-  { category: "F&B B 브랜드", metric: "조회수 147만" },
-  { category: "푸드 C 브랜드", metric: "매출 1000만" },
-  { category: "식품 D 브랜드", metric: "조회수 257만" },
+  { category: "F&B 브랜드", metric: "조회수 83만", video: "/videos/video5.mp4" },
+  { category: "식품 A 브랜드", metric: "ROAS 3.1배", video: "/videos/video7.mp4" },
+  { category: "F&B B 브랜드", metric: "조회수 147만", video: "/videos/video9.mp4" },
+  { category: "푸드 C 브랜드", metric: "매출 1000만", video: "/videos/video10.mp4" },
+  { category: "식품 D 브랜드", metric: "조회수 257만", video: "/videos/video11.mp4" },
 ];
+
+function HeroVideoCard({ item, index }: { item: { category: string; metric: string; video: string }; index: number }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+      setIsPlaying(false);
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+      whileHover={{ y: -8 }}
+      className="flex-shrink-0 w-[140px] md:w-[170px] snap-center cursor-pointer group"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* iPhone Mockup */}
+      <div className="relative">
+        {/* Phone Frame */}
+        <div className="relative bg-[#1a1a1a] rounded-[2.5rem] p-[3px] shadow-xl group-hover:shadow-2xl transition-all duration-300">
+          {/* Inner Frame */}
+          <div className="relative bg-[#0a0a0a] rounded-[2.3rem] overflow-hidden">
+            {/* Screen */}
+            <div className="relative aspect-[9/19.5] bg-black overflow-hidden">
+              {/* Dynamic Island */}
+              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[35%] h-[22px] bg-black rounded-full z-20" />
+
+              {/* Video Content */}
+              <video
+                ref={videoRef}
+                src={item.video}
+                className="absolute inset-0 w-full h-full object-cover"
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+
+              {/* Play Button Overlay */}
+              <div className={`absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
+                <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                  <Play className="w-5 h-5 text-background fill-background ml-0.5" />
+                </div>
+              </div>
+
+              {/* Bottom Metric Badge */}
+              <div className="absolute bottom-4 left-0 right-0 flex justify-center z-10">
+                <span className="bg-primary text-background text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                  {item.metric}
+                </span>
+              </div>
+
+              {/* Home Indicator */}
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[35%] h-1 bg-white/30 rounded-full" />
+            </div>
+          </div>
+        </div>
+
+        {/* Side Buttons */}
+        <div className="absolute left-0 top-[25%] w-[3px] h-8 bg-[#2a2a2a] rounded-l-sm" />
+        <div className="absolute left-0 top-[40%] w-[3px] h-12 bg-[#2a2a2a] rounded-l-sm" />
+        <div className="absolute left-0 top-[55%] w-[3px] h-12 bg-[#2a2a2a] rounded-l-sm" />
+        <div className="absolute right-0 top-[35%] w-[3px] h-16 bg-[#2a2a2a] rounded-r-sm" />
+      </div>
+
+      {/* Category Label */}
+      <p className="text-center text-xs text-background/50 mt-4 font-medium">
+        {item.category}
+      </p>
+    </motion.div>
+  );
+}
 
 export default function HeroSection() {
   return (
@@ -129,74 +216,7 @@ export default function HeroSection() {
 
           <div className="flex gap-4 md:gap-6 overflow-x-auto pb-4 px-2 snap-x snap-mandatory scrollbar-hide justify-center">
             {portfolioItems.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="flex-shrink-0 w-[140px] md:w-[170px] snap-center cursor-pointer group"
-              >
-                {/* iPhone Mockup */}
-                <div className="relative">
-                  {/* Phone Frame */}
-                  <div className="relative bg-[#1a1a1a] rounded-[2.5rem] p-[3px] shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                    {/* Inner Frame */}
-                    <div className="relative bg-[#0a0a0a] rounded-[2.3rem] overflow-hidden">
-                      {/* Screen */}
-                      <div className="relative aspect-[9/19.5] bg-gradient-to-b from-gray-800 to-gray-900 overflow-hidden">
-                        {/* Dynamic Island */}
-                        <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[35%] h-[22px] bg-black rounded-full z-20" />
-
-                        {/* Screen Content - Video Thumbnail Placeholder */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900">
-                          {/* Food image placeholder pattern */}
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-20 h-20 rounded-full bg-gray-700/50 flex items-center justify-center">
-                              <Play className="w-8 h-8 text-white/60 fill-white/60 ml-1" />
-                            </div>
-                          </div>
-
-                          {/* Subtle overlay lines */}
-                          <div className="absolute inset-0 opacity-10">
-                            <div className="absolute top-1/4 left-0 right-0 h-px bg-white/20" />
-                            <div className="absolute top-2/4 left-0 right-0 h-px bg-white/20" />
-                            <div className="absolute top-3/4 left-0 right-0 h-px bg-white/20" />
-                          </div>
-                        </div>
-
-                        {/* Play Button Overlay on Hover */}
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/30 transition-all duration-300">
-                          <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100 shadow-lg">
-                            <Play className="w-6 h-6 text-background fill-background ml-0.5" />
-                          </div>
-                        </div>
-
-                        {/* Bottom Metric Badge */}
-                        <div className="absolute bottom-4 left-0 right-0 flex justify-center z-10">
-                          <span className="bg-primary text-background text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-                            {item.metric}
-                          </span>
-                        </div>
-
-                        {/* Home Indicator */}
-                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[35%] h-1 bg-white/30 rounded-full" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Side Buttons */}
-                  <div className="absolute left-0 top-[25%] w-[3px] h-8 bg-[#2a2a2a] rounded-l-sm" />
-                  <div className="absolute left-0 top-[40%] w-[3px] h-12 bg-[#2a2a2a] rounded-l-sm" />
-                  <div className="absolute left-0 top-[55%] w-[3px] h-12 bg-[#2a2a2a] rounded-l-sm" />
-                  <div className="absolute right-0 top-[35%] w-[3px] h-16 bg-[#2a2a2a] rounded-r-sm" />
-                </div>
-
-                {/* Category Label */}
-                <p className="text-center text-xs text-background/50 mt-4 font-medium">
-                  {item.category}
-                </p>
-              </motion.div>
+              <HeroVideoCard key={index} item={item} index={index} />
             ))}
           </div>
         </motion.div>
