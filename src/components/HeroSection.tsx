@@ -5,11 +5,11 @@ import { Play, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
 const portfolioItems = [
-  { category: "F&B 브랜드", metric: "조회수 83만", video: "/videos/video5.mp4" },
+  { category: "F&B 브랜드", metric: "조회수 83만", video: "/videos/video12.mp4" },
   { category: "식품 A 브랜드", metric: "ROAS 3.1배", video: "/videos/video7.mp4" },
-  { category: "F&B B 브랜드", metric: "조회수 147만", video: "/videos/video9.mp4" },
+  { category: "F&B B 브랜드", metric: "조회수 147만", video: "/videos/video13.mp4" },
   { category: "푸드 C 브랜드", metric: "매출 1000만", video: "/videos/video10.mp4" },
-  { category: "식품 D 브랜드", metric: "조회수 257만", video: "/videos/video11.mp4" },
+  { category: "식품 D 브랜드", metric: "조회수 257만", video: "/videos/video14.mp4" },
 ];
 
 function HeroCarousel() {
