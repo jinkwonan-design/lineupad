@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play, ArrowRight } from "lucide-react";
+import { Play, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
 
 const portfolioItems = [
@@ -11,6 +11,69 @@ const portfolioItems = [
   { category: "푸드 C 브랜드", metric: "매출 1000만", video: "/videos/video10.mp4" },
   { category: "식품 D 브랜드", metric: "조회수 257만", video: "/videos/video11.mp4" },
 ];
+
+function HeroCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 240;
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.5 }}
+      className="relative"
+    >
+      <p className="text-center text-background/40 text-sm mb-6">
+        최근 제작 영상
+      </p>
+
+      {/* Left Arrow */}
+      <button
+        onClick={() => scroll('left')}
+        className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-all ${canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      >
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-background" />
+      </button>
+
+      {/* Right Arrow */}
+      <button
+        onClick={() => scroll('right')}
+        className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-all ${canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      >
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-background" />
+      </button>
+
+      <div
+        ref={scrollRef}
+        onScroll={checkScroll}
+        className="flex gap-4 md:gap-6 overflow-x-auto pb-4 px-12 snap-x snap-mandatory scrollbar-hide"
+      >
+        {portfolioItems.map((item, index) => (
+          <HeroVideoCard key={index} item={item} index={index} />
+        ))}
+      </div>
+    </motion.div>
+  );
+}
 
 function HeroVideoCard({ item, index }: { item: { category: string; metric: string; video: string }; index: number }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -205,21 +268,7 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Portfolio Preview */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <p className="text-center text-background/40 text-sm mb-6">
-            최근 제작 영상
-          </p>
-
-          <div className="flex gap-4 md:gap-6 overflow-x-auto pb-4 px-2 snap-x snap-mandatory scrollbar-hide justify-center">
-            {portfolioItems.map((item, index) => (
-              <HeroVideoCard key={index} item={item} index={index} />
-            ))}
-          </div>
-        </motion.div>
+        <HeroCarousel />
       </div>
     </section>
   );
