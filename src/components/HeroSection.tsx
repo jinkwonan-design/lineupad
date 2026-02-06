@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Play, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const portfolioItems = [
   { category: "F&B 브랜드", metric: "조회수 83만", video: "/videos/video5.mp4" },
@@ -16,6 +16,8 @@ function HeroCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isHovering, setIsHovering] = useState(false);
 
   const checkScroll = () => {
     if (scrollRef.current) {
@@ -28,11 +30,37 @@ function HeroCarousel() {
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const scrollAmount = 240;
-      scrollRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+
+      // 끝에 도달하면 처음으로 돌아가기
+      if (direction === 'right' && scrollLeft >= scrollWidth - clientWidth - 10) {
+        scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollRef.current.scrollBy({
+          left: direction === 'left' ? -scrollAmount : scrollAmount,
+          behavior: 'smooth'
+        });
+      }
     }
+  };
+
+  // 자동 슬라이드
+  useEffect(() => {
+    if (!isAutoPlaying || isHovering) return;
+
+    const interval = setInterval(() => {
+      scroll('right');
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, isHovering]);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
   };
 
   return (
@@ -41,6 +69,8 @@ function HeroCarousel() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.5 }}
       className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <p className="text-center text-background/40 text-sm mb-6">
         최근 제작 영상
