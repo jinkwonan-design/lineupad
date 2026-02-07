@@ -31,8 +31,7 @@ const pricingTiers = [
     features: [
       "STANDARD 항목 전체 포함",
       "목소리 남/여 버전 제공",
-      "인트로 A/B 버전 제공",
-      "소구점별 맞춤 기획",
+      "인트로 A/B 버전 제공 (소구점 별)",
     ],
   },
 ];
@@ -85,7 +84,7 @@ export default function PricingSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className={`relative bg-white rounded-3xl p-8 border transition-all duration-300 ${
+                className={`relative bg-white rounded-3xl p-8 border transition-all duration-300 flex flex-col ${
                   isRecommended
                     ? "border-primary shadow-xl scale-105 md:scale-110"
                     : "border-gray-200 shadow-sm hover:shadow-lg"
@@ -135,7 +134,7 @@ export default function PricingSection() {
                 <div className={`h-px mb-6 ${isRecommended ? "bg-primary/30" : "bg-gray-200"}`} />
 
                 {/* Features */}
-                <div className="space-y-4">
+                <div className="space-y-4 flex-1">
                   {tier.features.map((feature, featureIndex) => (
                     <motion.div
                       key={featureIndex}
