@@ -90,7 +90,7 @@ export default function PortfolioSection() {
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-background leading-tight">
             당신의 제품도{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">품절대란</span>의 주인공이 됩니다
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">품절대란</span>의 주인공이 됩니다
           </h2>
         </motion.div>
 

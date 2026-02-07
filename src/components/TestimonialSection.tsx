@@ -65,7 +65,7 @@ const testimonials = [
     username: "선물요정",
     timeAgo: "2일 전",
     likes: 241,
-    avatar: "bg-gradient-to-br from-amber-400 to-orange-500",
+    avatar: "bg-gradient-to-br from-cyan-300 to-orange-500",
   },
 ];
 
@@ -90,7 +90,7 @@ export default function TestimonialSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-background leading-tight">
             영상에 달리는 댓글들이
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">라인업애드의 실력</span>을 증명합니다
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">라인업애드의 실력</span>을 증명합니다
           </h2>
         </motion.div>
 

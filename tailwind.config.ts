@@ -13,7 +13,7 @@ const config: Config = {
         "background-alt": "#111111",
         foreground: "#FFFFFF",
         "foreground-muted": "#888888",
-        primary: "#FFE500",
+        primary: "#00FFDA",
         danger: "#FF3B3B",
         success: "#22C55E",
       },

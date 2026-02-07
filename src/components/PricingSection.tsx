@@ -117,7 +117,7 @@ export default function PricingSection() {
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-background mb-6">
             영상 제작{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">
               가이드라인
             </span>
           </h2>
@@ -262,7 +262,7 @@ export default function PricingSection() {
                       <span
                         className={`text-3xl font-black transition-all duration-300 ${
                           isActive
-                            ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400"
+                            ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300"
                             : "text-background"
                         }`}
                       >
@@ -325,7 +325,7 @@ export default function PricingSection() {
                       <span
                         className={`text-2xl font-black transition-all duration-300 ${
                           isActive
-                            ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400"
+                            ? "text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300"
                             : "text-background"
                         }`}
                       >

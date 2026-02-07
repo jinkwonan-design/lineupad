@@ -293,7 +293,7 @@ export default function HeroSection() {
             <br />
             직접 만드는{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">
+              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">
                 숏폼 영상
               </span>
               <span className="absolute bottom-2 left-0 right-0 h-3 bg-primary/20 -z-0" />

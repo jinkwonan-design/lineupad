@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Logo */}
           <div className="flex items-center space-x-1">
             <span className="text-xl font-bold text-background">라인업</span>
-            <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">애드</span>
+            <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">애드</span>
           </div>
 
           {/* Contact Info */}

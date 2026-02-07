@@ -21,7 +21,7 @@ const stats = [
     label: "누적 매출액",
     value: "14억+",
     icon: DollarSign,
-    color: "from-primary to-amber-400",
+    color: "from-primary to-cyan-300",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function ChannelSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-background leading-tight mb-6">
             누구나 찍을 수는 있지만,
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">
               아무나 터뜨릴 수는 없습니다.
             </span>
           </h2>
@@ -104,7 +104,7 @@ export default function ChannelSection() {
               >
                 <stat.icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
               </div>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400 mb-1">
+              <p className="text-2xl md:text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300 mb-1">
                 {stat.value}
               </p>
               <p className="text-xs md:text-sm text-background/50">{stat.label}</p>

@@ -21,7 +21,7 @@ export default function CTASection() {
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-background mb-4">
             지금 바로{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">문의</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">문의</span>
             하세요
           </h2>
           <p className="text-lg md:text-xl text-background/60 mb-10">

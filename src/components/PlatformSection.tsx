@@ -86,7 +86,7 @@ export default function PlatformSection() {
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-background leading-tight">
             하나의 영상으로{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">
               모든 플랫폼
             </span>
             에
@@ -149,7 +149,7 @@ export default function PlatformSection() {
               transition={{ duration: 0.3 }}
               className="relative z-10"
             >
-              <div className="w-56 md:w-64 lg:w-72 aspect-[9/14] bg-gradient-to-br from-primary via-primary to-amber-400 rounded-[2rem] shadow-2xl overflow-hidden">
+              <div className="w-56 md:w-64 lg:w-72 aspect-[9/14] bg-gradient-to-br from-primary via-primary to-cyan-300 rounded-[2rem] shadow-2xl overflow-hidden">
                 {contentTypes[currentIndex].uiType === "smartstore" && contentTypes[currentIndex].image ? (
                   // Naver Smart Store UI Style
                   <div className="relative w-full h-full bg-gray-100 flex flex-col">
