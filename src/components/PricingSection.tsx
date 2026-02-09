@@ -224,7 +224,9 @@ export default function PricingSection() {
 
                   {/* CTA Button */}
                   <motion.a
-                    href="#contact"
+                    href="https://open.kakao.com/o/sXiCmDfi"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`block w-full py-4 rounded-2xl text-center text-[15px] font-bold transition-all duration-300 mt-auto ${

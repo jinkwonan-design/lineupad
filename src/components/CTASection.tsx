@@ -29,7 +29,7 @@ export default function CTASection() {
           </p>
 
           <motion.a
-            href="https://pf.kakao.com/_xexaxl"
+            href="https://open.kakao.com/o/sXiCmDfi"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}

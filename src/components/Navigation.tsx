@@ -58,7 +58,9 @@ export default function Navigation() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="https://open.kakao.com/o/sXiCmDfi"
+              target="_blank"
+              rel="noopener noreferrer"
               className="ml-4 bg-background text-white px-6 py-2.5 rounded-full font-bold hover:bg-background/90 transition-all duration-200"
             >
               문의하기
@@ -95,7 +97,9 @@ export default function Navigation() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="https://open.kakao.com/o/sXiCmDfi"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block bg-background text-white px-6 py-3.5 rounded-full font-bold text-center mt-4"
               onClick={() => setIsMobileMenuOpen(false)}
             >

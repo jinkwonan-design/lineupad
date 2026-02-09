@@ -320,7 +320,9 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
         >
           <a
-            href="#contact"
+            href="https://open.kakao.com/o/sXiCmDfi"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group w-full sm:w-auto px-8 py-4 bg-background text-white rounded-full font-bold text-lg hover:bg-background/90 transition-all duration-300 flex items-center justify-center gap-2"
           >
             무료 상담 받기
