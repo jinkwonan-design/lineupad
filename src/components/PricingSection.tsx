@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Check, Crown, Zap } from "lucide-react";
+import { trackContact } from "@/lib/fbpixel";
 
 interface Feature {
   highlight: string;
@@ -227,6 +228,7 @@ export default function PricingSection() {
                     href="https://open.kakao.com/o/sXiCmDfi"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={trackContact}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`block w-full py-3.5 sm:py-4 rounded-2xl text-center text-sm sm:text-[15px] font-bold transition-all duration-300 mt-auto ${

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+import { trackContact } from "@/lib/fbpixel";
 
 export default function CTASection() {
   return (
@@ -29,6 +30,7 @@ export default function CTASection() {
             href="https://open.kakao.com/o/sXiCmDfi"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackContact}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-2.5 sm:gap-3 bg-primary text-background px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all"

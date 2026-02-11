@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { Play, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState, useEffect, useCallback } from "react";
+import { trackContact } from "@/lib/fbpixel";
 
 // 카운트업 애니메이션 컴포넌트
 function CountUp({
@@ -337,6 +338,7 @@ export default function HeroSection() {
             href="https://open.kakao.com/o/sXiCmDfi"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackContact}
             className="group w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-background text-white rounded-full font-bold text-base sm:text-lg hover:bg-background/90 transition-all duration-300 flex items-center justify-center gap-2"
           >
             무료 상담 받기
