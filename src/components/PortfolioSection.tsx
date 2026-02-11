@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play, Eye } from "lucide-react";
+import { Play, Eye, Download } from "lucide-react";
 import { useRef, useState } from "react";
 
 const portfolioItems = [
@@ -99,6 +99,27 @@ export default function PortfolioSection() {
             <PortfolioVideoCard key={index} item={item} index={index} />
           ))}
         </div>
+
+        {/* Portfolio Download Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mt-12"
+        >
+          <motion.a
+            href="/portfolio.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center gap-2 bg-background text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-background/90 transition-all duration-300 shadow-lg"
+          >
+            <Download className="w-5 h-5" />
+            포트폴리오 다운로드
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

@@ -329,10 +329,12 @@ export default function HeroSection() {
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
           <a
-            href="#portfolio"
+            href="/portfolio.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto px-8 py-4 bg-transparent text-background border-2 border-background/20 rounded-full font-bold text-lg hover:border-background/40 hover:bg-background/5 transition-all duration-300"
           >
-            포트폴리오 보기
+            포트폴리오 다운로드
           </a>
         </motion.div>
 
