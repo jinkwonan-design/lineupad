@@ -21,6 +21,7 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <meta name="naver-site-verification" content="5284179e3d217a2ac4e1843a656ad0a528bc0ece" />
+        <meta name="google-site-verification" content="3HjFXQCMoXTcPtZrOK4LI7a0M6No9uB28jTH1j4ojUE" />
       </head>
       <body className="antialiased">
         {children}
