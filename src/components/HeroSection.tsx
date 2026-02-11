@@ -367,17 +367,20 @@ export default function HeroSection() {
           </div>
           <div className="text-center">
             <p className="text-xl sm:text-2xl md:text-4xl font-black text-background">
-              <CountUp end={14} suffix="억" duration={2000} />
+              <CountUp end={25} suffix="억" duration={2000} />
             </p>
             <p className="text-xs sm:text-sm md:text-base text-background/50">누적 매출</p>
           </div>
           <div className="text-center">
             <p className="text-xl sm:text-2xl md:text-4xl font-black text-background">
-              <CountUp end={1000} suffix="만+" duration={2000} />
+              <CountUp end={1} suffix="억+" duration={2000} />
             </p>
             <p className="text-xs sm:text-sm md:text-base text-background/50">총 조회수</p>
           </div>
         </motion.div>
+        <p className="text-center text-[10px] sm:text-xs text-background/30 tracking-widest uppercase -mt-6 sm:-mt-10 mb-10 sm:mb-16">
+          2024-2025 Performance
+        </p>
 
         {/* Portfolio Preview */}
         <HeroCarousel />
