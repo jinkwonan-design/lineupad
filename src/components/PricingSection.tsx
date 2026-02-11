@@ -70,7 +70,7 @@ const pricingTiers: PricingTier[] = [
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="py-20 md:py-32 bg-gray-50 relative overflow-hidden">
+    <section id="pricing" className="py-16 sm:py-20 md:py-32 bg-gray-50 relative overflow-hidden">
       <div className="absolute top-20 -right-32 w-96 h-96 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl" />
       <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-tr from-gray-200 to-gray-100 rounded-full blur-3xl" />
 
@@ -81,12 +81,12 @@ export default function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <p className="text-xs font-semibold tracking-[3px] uppercase text-primary mb-4">
+          <p className="text-xs font-semibold tracking-[3px] uppercase text-primary mb-3 sm:mb-4">
             Transparent Pricing
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-background mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-background mb-4 sm:mb-6">
             영상 제작{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">
               가이드라인
@@ -98,7 +98,7 @@ export default function PricingSection() {
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-6 items-stretch">
+        <div className="grid md:grid-cols-3 gap-4 sm:gap-6 items-stretch">
           {pricingTiers.map((tier, index) => {
             const isRecommended = tier.recommended;
             const isPremium = tier.premium;
@@ -141,7 +141,7 @@ export default function PricingSection() {
                 </div>
 
                 {/* Card Body */}
-                <div className="p-6 pb-8 flex-1 flex flex-col">
+                <div className="p-5 sm:p-6 pb-6 sm:pb-8 flex-1 flex flex-col">
                   {/* Plan Name */}
                   <p className={`text-sm font-bold tracking-[2px] uppercase mb-1 ${
                     isPremium ? "text-emerald-700" : "text-primary"
@@ -151,7 +151,7 @@ export default function PricingSection() {
 
                   {/* Price */}
                   <div className="flex items-baseline gap-1 mb-2">
-                    <span className={`text-5xl font-black tracking-tight ${
+                    <span className={`text-4xl sm:text-5xl font-black tracking-tight ${
                       isRecommended
                         ? "text-primary"
                         : isPremium
@@ -164,7 +164,7 @@ export default function PricingSection() {
                   </div>
 
                   {/* Persona */}
-                  <span className={`inline-block self-start px-3.5 py-1.5 rounded-full text-xs font-semibold mb-5 ${
+                  <span className={`inline-block self-start px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold mb-4 sm:mb-5 ${
                     isPremium
                       ? "bg-emerald-700/10 text-emerald-700"
                       : "bg-primary/10 text-primary"
@@ -208,7 +208,7 @@ export default function PricingSection() {
                   </div>
 
                   {/* Stats Callout */}
-                  <div className={`rounded-xl p-3.5 flex items-center gap-3 mb-6 ${
+                  <div className={`rounded-xl p-3 sm:p-3.5 flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-6 ${
                     isPremium
                       ? "bg-emerald-700/10"
                       : "bg-primary/10"
@@ -229,7 +229,7 @@ export default function PricingSection() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`block w-full py-4 rounded-2xl text-center text-[15px] font-bold transition-all duration-300 mt-auto ${
+                    className={`block w-full py-3.5 sm:py-4 rounded-2xl text-center text-sm sm:text-[15px] font-bold transition-all duration-300 mt-auto ${
                       isRecommended
                         ? "bg-primary text-background hover:bg-primary/90 shadow-lg shadow-primary/30"
                         : isPremium
@@ -251,7 +251,7 @@ export default function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-12"
+          className="text-center mt-8 sm:mt-12"
         >
           <span className="inline-flex items-center gap-1.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 text-sm text-background/40">
             📁 모든 플랜에 원본 영상 파일이 포함됩니다

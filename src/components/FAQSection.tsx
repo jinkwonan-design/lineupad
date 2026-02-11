@@ -56,7 +56,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-20 md:py-32 bg-white relative overflow-hidden">
+    <section id="faq" className="py-16 sm:py-20 md:py-32 bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-20 -left-32 w-96 h-96 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl" />
       <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-gradient-to-tr from-gray-100 to-gray-50 rounded-full blur-3xl" />
@@ -67,17 +67,17 @@ export default function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <p className="text-background/50 text-base md:text-lg mb-4">
+          <p className="text-background/50 text-sm sm:text-base md:text-lg mb-3 sm:mb-4">
             자주 묻는 질문
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-background">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-background">
             Q&A
           </h2>
         </motion.div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -85,19 +85,19 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`bg-gray-50 rounded-2xl border overflow-hidden transition-all ${
+              className={`bg-gray-50 rounded-xl sm:rounded-2xl border overflow-hidden transition-all ${
                 openIndex === index ? "border-primary/30 shadow-md" : "border-gray-200"
               }`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full p-6 flex items-center justify-between text-left"
+                className="w-full p-4 sm:p-6 flex items-center justify-between text-left gap-3"
               >
-                <span className="text-lg md:text-xl font-bold text-background">
+                <span className="text-base sm:text-lg md:text-xl font-bold text-background">
                   Q. {faq.question}
                 </span>
                 <ChevronDown
-                  className={`w-6 h-6 text-background/40 transition-transform ${
+                  className={`w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-background/40 transition-transform ${
                     openIndex === index ? "rotate-180 text-primary" : ""
                   }`}
                 />
@@ -107,9 +107,9 @@ export default function FAQSection() {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  className="px-6 pb-6"
+                  className="px-4 sm:px-6 pb-4 sm:pb-6"
                 >
-                  <p className="text-background/60 leading-relaxed">
+                  <p className="text-background/60 text-sm sm:text-base leading-relaxed">
                     A. {faq.answer}
                   </p>
                 </motion.div>

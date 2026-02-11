@@ -128,22 +128,22 @@ function HeroCarousel() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <p className="text-center text-background/40 text-sm mb-6">
+      <p className="text-center text-background/40 text-xs sm:text-sm mb-4 sm:mb-6">
         최근 제작 영상
       </p>
 
-      {/* Left Arrow */}
+      {/* Left Arrow - 모바일에서 숨김 (스와이프 사용) */}
       <button
         onClick={() => scroll('left')}
-        className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-all ${canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg items-center justify-center hover:bg-gray-50 transition-all ${canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       >
         <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-background" />
       </button>
 
-      {/* Right Arrow */}
+      {/* Right Arrow - 모바일에서 숨김 (스와이프 사용) */}
       <button
         onClick={() => scroll('right')}
-        className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-all ${canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg items-center justify-center hover:bg-gray-50 transition-all ${canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       >
         <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-background" />
       </button>
@@ -151,7 +151,7 @@ function HeroCarousel() {
       <div
         ref={scrollRef}
         onScroll={checkScroll}
-        className="flex gap-4 md:gap-6 overflow-x-auto pb-4 px-12 snap-x snap-mandatory scrollbar-hide"
+        className="flex gap-3 sm:gap-4 md:gap-6 overflow-x-auto pb-4 px-4 sm:px-12 snap-x snap-mandatory scrollbar-hide"
       >
         {portfolioItems.map((item, index) => (
           <HeroVideoCard key={index} item={item} index={index} />
@@ -165,15 +165,28 @@ function HeroVideoCard({ item, index }: { item: { category: string; metric: stri
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handleMouseEnter = () => {
+  const togglePlay = () => {
     if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (videoRef.current && window.innerWidth >= 640) {
       videoRef.current.play();
       setIsPlaying(true);
     }
   };
 
   const handleMouseLeave = () => {
-    if (videoRef.current) {
+    if (videoRef.current && window.innerWidth >= 640) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
       setIsPlaying(false);
@@ -186,20 +199,21 @@ function HeroVideoCard({ item, index }: { item: { category: string; metric: stri
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
       whileHover={{ y: -8 }}
-      className="flex-shrink-0 w-[160px] md:w-[220px] snap-center cursor-pointer group"
+      className="flex-shrink-0 w-[140px] sm:w-[160px] md:w-[220px] snap-center cursor-pointer group"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={togglePlay}
     >
       {/* iPhone Mockup */}
       <div className="relative">
         {/* Phone Frame */}
-        <div className="relative bg-[#1a1a1a] rounded-[2.5rem] p-[3px] shadow-xl group-hover:shadow-2xl transition-all duration-300">
+        <div className="relative bg-[#1a1a1a] rounded-[2rem] sm:rounded-[2.5rem] p-[2px] sm:p-[3px] shadow-xl group-hover:shadow-2xl transition-all duration-300">
           {/* Inner Frame */}
-          <div className="relative bg-[#0a0a0a] rounded-[2.3rem] overflow-hidden">
+          <div className="relative bg-[#0a0a0a] rounded-[1.8rem] sm:rounded-[2.3rem] overflow-hidden">
             {/* Screen */}
             <div className="relative aspect-[9/19.5] bg-black overflow-hidden">
               {/* Dynamic Island */}
-              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[35%] h-[22px] bg-black rounded-full z-20" />
+              <div className="absolute top-2 sm:top-3 left-1/2 -translate-x-1/2 w-[35%] h-[18px] sm:h-[22px] bg-black rounded-full z-20" />
 
               {/* Video Content */}
               <video
@@ -214,33 +228,33 @@ function HeroVideoCard({ item, index }: { item: { category: string; metric: stri
 
               {/* Play Button Overlay */}
               <div className={`absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
-                <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
-                  <Play className="w-6 h-6 text-background fill-background ml-0.5" />
+                <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                  <Play className="w-4 h-4 sm:w-6 sm:h-6 text-background fill-background ml-0.5" />
                 </div>
               </div>
 
               {/* Bottom Metric Badge */}
-              <div className="absolute bottom-4 left-0 right-0 flex justify-center z-10">
-                <span className="bg-primary text-background text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+              <div className="absolute bottom-3 sm:bottom-4 left-0 right-0 flex justify-center z-10">
+                <span className="bg-primary text-background text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg">
                   {item.metric}
                 </span>
               </div>
 
               {/* Home Indicator */}
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[35%] h-1 bg-white/30 rounded-full" />
+              <div className="absolute bottom-1.5 sm:bottom-2 left-1/2 -translate-x-1/2 w-[35%] h-0.5 sm:h-1 bg-white/30 rounded-full" />
             </div>
           </div>
         </div>
 
         {/* Side Buttons */}
-        <div className="absolute left-0 top-[25%] w-[3px] h-8 bg-[#2a2a2a] rounded-l-sm" />
-        <div className="absolute left-0 top-[40%] w-[3px] h-12 bg-[#2a2a2a] rounded-l-sm" />
-        <div className="absolute left-0 top-[55%] w-[3px] h-12 bg-[#2a2a2a] rounded-l-sm" />
-        <div className="absolute right-0 top-[35%] w-[3px] h-16 bg-[#2a2a2a] rounded-r-sm" />
+        <div className="absolute left-0 top-[25%] w-[2px] sm:w-[3px] h-6 sm:h-8 bg-[#2a2a2a] rounded-l-sm" />
+        <div className="absolute left-0 top-[40%] w-[2px] sm:w-[3px] h-10 sm:h-12 bg-[#2a2a2a] rounded-l-sm" />
+        <div className="absolute left-0 top-[55%] w-[2px] sm:w-[3px] h-10 sm:h-12 bg-[#2a2a2a] rounded-l-sm" />
+        <div className="absolute right-0 top-[35%] w-[2px] sm:w-[3px] h-12 sm:h-16 bg-[#2a2a2a] rounded-r-sm" />
       </div>
 
       {/* Category Label */}
-      <p className="text-center text-xs text-background/50 mt-4 font-medium">
+      <p className="text-center text-[10px] sm:text-xs text-background/50 mt-3 sm:mt-4 font-medium">
         {item.category}
       </p>
     </motion.div>
@@ -249,7 +263,7 @@ function HeroVideoCard({ item, index }: { item: { category: string; metric: stri
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-white overflow-hidden pt-20">
+    <section className="relative min-h-screen bg-white overflow-hidden pt-16 sm:pt-20">
       {/* Abstract Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Gradient Orbs */}
@@ -267,27 +281,27 @@ export default function HeroSection() {
       </div>
 
       {/* Main Content */}
-      <div className="relative max-w-6xl mx-auto px-4 pt-16 md:pt-24 pb-12">
+      <div className="relative max-w-6xl mx-auto px-4 pt-10 sm:pt-16 md:pt-24 pb-8 sm:pb-12">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center mb-8"
+          className="flex justify-center mb-6 sm:mb-8"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-background/5 border border-background/10 rounded-full text-sm text-background/70">
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+          <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-background/5 border border-background/10 rounded-full text-xs sm:text-sm text-background/70">
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full animate-pulse" />
             식품 · F&B 전문 영상 제작
           </span>
         </motion.div>
 
         {/* Main Headline */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-black text-background leading-[1.1] tracking-tight mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-background leading-[1.15] tracking-tight mb-4 sm:mb-6"
           >
             인플루언서가
             <br />
@@ -296,7 +310,7 @@ export default function HeroSection() {
               <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">
                 숏폼 영상
               </span>
-              <span className="absolute bottom-2 left-0 right-0 h-3 bg-primary/20 -z-0" />
+              <span className="absolute bottom-1 sm:bottom-2 left-0 right-0 h-2 sm:h-3 bg-primary/20 -z-0" />
             </span>
           </motion.h1>
 
@@ -304,7 +318,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl lg:text-2xl text-background/60 font-medium max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-background/60 font-medium max-w-2xl mx-auto px-2"
           >
             대기업 대비{" "}
             <span className="text-background font-bold">1/10</span> 비용으로{" "}
@@ -317,22 +331,22 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-10 sm:mb-16 px-4 sm:px-0"
         >
           <a
             href="https://open.kakao.com/o/sXiCmDfi"
             target="_blank"
             rel="noopener noreferrer"
-            className="group w-full sm:w-auto px-8 py-4 bg-background text-white rounded-full font-bold text-lg hover:bg-background/90 transition-all duration-300 flex items-center justify-center gap-2"
+            className="group w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-background text-white rounded-full font-bold text-base sm:text-lg hover:bg-background/90 transition-all duration-300 flex items-center justify-center gap-2"
           >
             무료 상담 받기
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
           </a>
           <a
             href="/portfolio.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-8 py-4 bg-transparent text-background border-2 border-background/20 rounded-full font-bold text-lg hover:border-background/40 hover:bg-background/5 transition-all duration-300"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent text-background border-2 border-background/20 rounded-full font-bold text-base sm:text-lg hover:border-background/40 hover:bg-background/5 transition-all duration-300 text-center"
           >
             포트폴리오 다운로드
           </a>
@@ -343,25 +357,25 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex justify-center gap-8 md:gap-16 mb-16"
+          className="flex justify-center gap-6 sm:gap-8 md:gap-16 mb-10 sm:mb-16"
         >
           <div className="text-center">
-            <p className="text-2xl md:text-4xl font-black text-background">
+            <p className="text-xl sm:text-2xl md:text-4xl font-black text-background">
               <CountUp end={500} suffix="+" duration={2000} />
             </p>
-            <p className="text-sm md:text-base text-background/50">제작 영상</p>
+            <p className="text-xs sm:text-sm md:text-base text-background/50">제작 영상</p>
           </div>
           <div className="text-center">
-            <p className="text-2xl md:text-4xl font-black text-background">
+            <p className="text-xl sm:text-2xl md:text-4xl font-black text-background">
               <CountUp end={14} suffix="억" duration={2000} />
             </p>
-            <p className="text-sm md:text-base text-background/50">누적 매출</p>
+            <p className="text-xs sm:text-sm md:text-base text-background/50">누적 매출</p>
           </div>
           <div className="text-center">
-            <p className="text-2xl md:text-4xl font-black text-background">
+            <p className="text-xl sm:text-2xl md:text-4xl font-black text-background">
               <CountUp end={1000} suffix="만+" duration={2000} />
             </p>
-            <p className="text-sm md:text-base text-background/50">총 조회수</p>
+            <p className="text-xs sm:text-sm md:text-base text-background/50">총 조회수</p>
           </div>
         </motion.div>
 
