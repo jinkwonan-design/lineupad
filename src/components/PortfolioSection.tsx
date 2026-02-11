@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Play, Eye, Download } from "lucide-react";
 import { useRef, useState } from "react";
+import { trackLead } from "@/lib/fbpixel";
 
 const portfolioItems = [
   { views: "576만", video: "/videos/video1.mp4" },
@@ -126,6 +127,7 @@ export default function PortfolioSection() {
             href="/portfolio.pdf"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackLead}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-2 bg-background text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-background/90 transition-all duration-300 shadow-lg"

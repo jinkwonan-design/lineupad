@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { Play, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { trackContact } from "@/lib/fbpixel";
+import { trackContact, trackLead } from "@/lib/fbpixel";
 
 // 카운트업 애니메이션 컴포넌트
 function CountUp({
@@ -348,6 +348,7 @@ export default function HeroSection() {
             href="/portfolio.pdf"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackLead}
             className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent text-background border-2 border-background/20 rounded-full font-bold text-base sm:text-lg hover:border-background/40 hover:bg-background/5 transition-all duration-300 text-center"
           >
             포트폴리오 다운로드

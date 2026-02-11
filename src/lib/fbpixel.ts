@@ -14,7 +14,12 @@ export const trackContact = () => {
 
 export const trackLead = () => {
   if (typeof window !== "undefined" && window.fbq) {
-    window.fbq("track", "Lead");
+    window.fbq("track", "Lead", {
+      content_name: "라인업애드_25억_포트폴리오",
+      content_category: "PDF_Download",
+      value: 50000,
+      currency: "KRW",
+    });
   }
 };
 
