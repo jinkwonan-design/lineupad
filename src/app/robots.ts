@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://lineupclip.co.kr/sitemap.xml",
+    sitemap: "https://www.lineupclip.co.kr/sitemap.xml",
   };
 }

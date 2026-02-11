@@ -1,5 +1,5 @@
 export async function GET() {
-  const baseUrl = "https://lineupclip.co.kr";
+  const baseUrl = "https://www.lineupclip.co.kr";
   const now = new Date().toUTCString();
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
