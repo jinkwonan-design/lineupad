@@ -16,16 +16,13 @@ export default function CTASection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-background/50 text-sm sm:text-base md:text-lg mb-3 sm:mb-4">
-            무료 상담 신청
-          </p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-background mb-3 sm:mb-4">
-            지금 바로{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">문의</span>
-            하세요
+            &apos;우리 제품도{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300">가능</span>
+            할까?&apos;
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-background/60 mb-8 sm:mb-10">
-            카카오톡으로 간편하게 상담받으세요
+            제품 사진 한 장이면 무료로 진단해 드립니다
           </p>
 
           <motion.a
@@ -34,10 +31,10 @@ export default function CTASection() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2.5 sm:gap-3 bg-[#FEE500] text-[#3C1E1E] px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all"
+            className="inline-flex items-center gap-2.5 sm:gap-3 bg-primary text-background px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-base sm:text-lg shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all"
           >
             <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
-            카카오톡 문의하기
+            무료 진단 신청하기
           </motion.a>
         </motion.div>
       </div>
