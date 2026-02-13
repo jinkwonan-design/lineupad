@@ -166,31 +166,22 @@ function HeroVideoCard({ item, index }: { item: { category: string; metric: stri
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0.001;
+    }
+  };
+
   const togglePlay = () => {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
-        videoRef.current.currentTime = 0;
+        videoRef.current.currentTime = 0.001;
         setIsPlaying(false);
       } else {
         videoRef.current.play();
         setIsPlaying(true);
       }
-    }
-  };
-
-  const handleMouseEnter = () => {
-    if (videoRef.current && window.innerWidth >= 640) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (videoRef.current && window.innerWidth >= 640) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-      setIsPlaying(false);
     }
   };
 
@@ -201,8 +192,6 @@ function HeroVideoCard({ item, index }: { item: { category: string; metric: stri
       transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
       whileHover={{ y: -8 }}
       className="flex-shrink-0 w-[140px] sm:w-[160px] md:w-[220px] snap-center cursor-pointer group"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       onClick={togglePlay}
     >
       {/* iPhone Mockup */}
@@ -219,12 +208,13 @@ function HeroVideoCard({ item, index }: { item: { category: string; metric: stri
               {/* Video Content */}
               <video
                 ref={videoRef}
-                src={item.video}
+                src={`${item.video}#t=0.001`}
                 className="absolute inset-0 w-full h-full object-cover"
                 muted
                 loop
                 playsInline
                 preload="metadata"
+                onLoadedMetadata={handleLoadedMetadata}
               />
 
               {/* Play Button Overlay */}
