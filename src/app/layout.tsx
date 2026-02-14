@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import MetaPixel from "@/components/MetaPixel";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
         <meta name="google-site-verification" content="3HjFXQCMoXTcPtZrOK4LI7a0M6No9uB28jTH1j4ojUE" />
       </head>
       <body className="antialiased">
+        <GoogleAnalytics />
         <MetaPixel />
         {children}
       </body>
