@@ -213,7 +213,7 @@ function HeroVideoCard({ item, index }: { item: { category: string; metric: stri
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload="auto"
                 onLoadedMetadata={handleLoadedMetadata}
               />
 

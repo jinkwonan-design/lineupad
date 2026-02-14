@@ -51,7 +51,7 @@ function PortfolioVideoCard({ item, index }: { item: { views: string; video: str
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
         onLoadedMetadata={handleLoadedMetadata}
       />
 
