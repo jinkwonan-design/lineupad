@@ -253,63 +253,110 @@ export default function PlatformSection() {
                       fill
                       className="object-cover"
                     />
-                    {/* Play button overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-14 h-14 rounded-full bg-black/50 flex items-center justify-center">
-                        <Play className="w-7 h-7 text-white ml-1" fill="white" />
+                    {/* YouTube Top Header */}
+                    <div className="absolute top-0 left-0 right-0 z-10 p-3 flex items-center justify-between">
+                      <div className="flex items-center gap-1.5">
+                        {/* YouTube Shorts Icon */}
+                        <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="currentColor">
+                          <path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25z"/>
+                        </svg>
+                        <span className="text-white text-[11px] font-bold">Shorts</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="currentColor">
+                          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="currentColor">
+                          <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
                       </div>
                     </div>
                     {/* YouTube Shorts Right Sidebar */}
-                    <div className="absolute right-2 bottom-20 flex flex-col items-center gap-4">
+                    <div className="absolute right-2 bottom-24 flex flex-col items-center gap-3">
                       <div className="flex flex-col items-center">
-                        <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                           <ThumbsUp className="w-5 h-5 text-white" />
                         </div>
-                        <span className="text-[10px] text-white mt-1">5.2천</span>
+                        <span className="text-[9px] text-white mt-1 font-medium">5.2천</span>
                       </div>
                       <div className="flex flex-col items-center">
-                        <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                           <ThumbsDown className="w-5 h-5 text-white" />
                         </div>
-                        <span className="text-[10px] text-white mt-1">싫어요</span>
+                        <span className="text-[9px] text-white mt-1 font-medium">싫어요</span>
                       </div>
                       <div className="flex flex-col items-center">
-                        <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                           <MessageCircle className="w-5 h-5 text-white" />
                         </div>
-                        <span className="text-[10px] text-white mt-1">73</span>
+                        <span className="text-[9px] text-white mt-1 font-medium">73</span>
                       </div>
                       <div className="flex flex-col items-center">
-                        <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                           <Share2 className="w-5 h-5 text-white" />
                         </div>
-                        <span className="text-[10px] text-white mt-1">공유</span>
+                        <span className="text-[9px] text-white mt-1 font-medium">공유</span>
                       </div>
                       <div className="flex flex-col items-center">
-                        <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                           <Sparkles className="w-5 h-5 text-white" />
                         </div>
-                        <span className="text-[10px] text-white mt-1">리믹스</span>
+                        <span className="text-[9px] text-white mt-1 font-medium">리믹스</span>
+                      </div>
+                      {/* Channel thumbnail */}
+                      <div className="w-10 h-10 rounded-lg overflow-hidden border-2 border-white/30">
+                        <div className="w-full h-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
+                          <span className="text-[7px] font-bold text-white">L</span>
+                        </div>
                       </div>
                     </div>
                     {/* YouTube Shorts Bottom Info */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 pt-10">
-                      <div className="flex items-center gap-2 mb-2">
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 pt-12">
+                      <div className="flex items-center gap-2 mb-1.5">
                         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
-                          <span className="text-[8px] font-bold text-white">AD</span>
+                          <span className="text-[8px] font-bold text-white">LA</span>
                         </div>
-                        <span className="text-white text-[11px] font-medium">@lineup_ad</span>
-                        <button className="bg-white text-black text-[9px] font-bold px-2 py-0.5 rounded ml-1">
+                        <span className="text-white text-[11px] font-semibold">@lineup_ad</span>
+                        <button className="bg-red-600 text-white text-[9px] font-bold px-3 py-1 rounded-full ml-1">
                           구독
                         </button>
                       </div>
-                      <p className="text-white text-[10px] leading-tight">
-                        {contentTypes[currentIndex].title}
+                      <p className="text-white text-[10px] leading-tight mb-1.5">
+                        이 맛에 숏폼 찍지 🔥 #먹방 #숏폼광고
                       </p>
-                      {/* Label */}
-                      <span className="inline-block mt-2 bg-red-600 text-white text-[8px] font-bold px-2 py-0.5 rounded">
-                        Shorts
-                      </span>
+                      {/* Music bar */}
+                      <div className="flex items-center gap-1.5">
+                        <svg viewBox="0 0 24 24" className="w-3 h-3 text-white" fill="currentColor">
+                          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                        </svg>
+                        <span className="text-white/80 text-[9px]">오리지널 사운드 - lineup_ad</span>
+                      </div>
+                    </div>
+                    {/* YouTube Bottom Nav Bar */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-[#212121] flex items-center justify-around py-1.5 px-1">
+                      <div className="flex flex-col items-center">
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-white/60" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        <span className="text-[7px] text-white/60">홈</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-white" fill="currentColor">
+                          <path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25z"/>
+                        </svg>
+                        <span className="text-[7px] text-white font-bold">Shorts</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+                          <span className="text-black text-[14px] font-light">+</span>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-white/60" fill="currentColor"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+                        <span className="text-[7px] text-white/60">구독</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-white/60" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        <span className="text-[7px] text-white/60">나</span>
+                      </div>
                     </div>
                   </div>
                 ) : contentTypes[currentIndex].uiType === "raw" && contentTypes[currentIndex].image ? (
