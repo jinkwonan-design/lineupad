@@ -6,10 +6,10 @@ import { useRef, useState } from "react";
 import { trackLead } from "@/lib/fbpixel";
 
 const portfolioItems = [
-  { views: "576만", video: "/videos/video1.mp4" },
-  { views: "229만", video: "/videos/video16.mp4" },
-  { views: "258만", video: "/videos/video15.mp4" },
-  { views: "412만", video: "/videos/video17.mp4" },
+  { views: "576만", video: "https://pub-8fe4c6430238462ebbc0dcb8f85e4269.r2.dev/video1.mp4" },
+  { views: "229만", video: "https://pub-8fe4c6430238462ebbc0dcb8f85e4269.r2.dev/video16.mp4" },
+  { views: "258만", video: "https://pub-8fe4c6430238462ebbc0dcb8f85e4269.r2.dev/video15.mp4" },
+  { views: "412만", video: "https://pub-8fe4c6430238462ebbc0dcb8f85e4269.r2.dev/video17.mp4" },
 ];
 
 function PortfolioVideoCard({ item, index }: { item: { views: string; video: string }; index: number }) {
@@ -51,7 +51,7 @@ function PortfolioVideoCard({ item, index }: { item: { views: string; video: str
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         onLoadedMetadata={handleLoadedMetadata}
       />
 
